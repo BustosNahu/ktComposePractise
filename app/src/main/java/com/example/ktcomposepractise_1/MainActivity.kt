@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -78,9 +80,24 @@ fun MyButton() {
 
         }
 
-    }
+        LazyColumn(){
+            items(listOf(Message("",""),)){mesg ->
+                Button(onClick = {
+                    Toast.makeText(context, "Hola ${mesg.nombre}", Toast.LENGTH_SHORT).show()
+                },
+                    modifier = Modifier.padding(all = Dp(10f)),
+                    enabled = true,
+                    shape = MaterialTheme.shapes.medium)
+                {
+                    Text(text = "Geek for Geeks", color = Color.White)
+                }
+            }
+        }
 
+    }
 }
+
+
 
 @Preview(
     showBackground = true,
